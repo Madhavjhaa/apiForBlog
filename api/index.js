@@ -12,7 +12,7 @@ const path = require("path");
 dotenv.config();
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
-
+var port = process.env.PORT || 8080;
 mongoose
   .connect("mongodb+srv://madhav:12345@cluster0.0xs8cjd.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
@@ -45,6 +45,6 @@ app.get('/', (req, res) => {
    res.send("welcome ");
 })
 
-app.listen("5000", () => {
+app.listen(port, () => {
   console.log("Backend is running.");
 });
